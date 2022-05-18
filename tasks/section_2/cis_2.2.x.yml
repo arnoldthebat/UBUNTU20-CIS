@@ -3,6 +3,7 @@
   apt:
       name: nis
       state: absent
+      purge: true
   when:
       - ubtu20cis_rule_2_2_1
       - not ubtu20cis_nis_required
@@ -16,6 +17,7 @@
   apt:
       name: rsh-client
       state: absent
+      purge: true
   when:
       - ubtu20cis_rule_2_2_2
       - not ubtu20cis_rsh_required
@@ -31,6 +33,7 @@
   apt:
       name: talk
       state: absent
+      purge: true
   when:
       - ubtu20cis_rule_2_2_3
       - not ubtu20cis_talk_required
@@ -46,6 +49,7 @@
   apt:
       name: telnet
       state: absent
+      purge: true
   when:
       - ubtu20cis_rule_2_2_4
       - not ubtu20cis_telnet_required
@@ -61,6 +65,7 @@
   apt:
       name: ldap-utils
       state: absent
+      purge: true
   when:
       - ubtu20cis_rule_2_2_5
       - not ubtu20cis_ldap_clients_required
@@ -76,6 +81,7 @@
   apt:
       name: rpcbind
       state: absent
+      purge: true
   when:
       - ubtu20cis_rule_2_2_6
       - not ubtu20cis_rpc_required
