@@ -10,7 +10,7 @@
   when:
       - ansible_distribution is not defined
   tags:
-    - always
+      - always
 
 - name: Check OS version and family
   fail:
@@ -19,7 +19,7 @@
     - ansible_distribution == 'Ubuntu'
     - ansible_distribution_major_version is version_compare('20', '!=')
   tags:
-    - always
+      - always
 
 - name: Check ansible version
   fail:
@@ -36,6 +36,8 @@
   when:
       - ubtu20cis_section5_patch or
         ubtu20cis_section6_patch
+  tags:
+      - always
 
 - name: Gather the package facts
   package_facts:

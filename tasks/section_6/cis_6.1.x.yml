@@ -162,7 +162,7 @@
       - permissions
 
 - name: "AUTOMATED | 6.1.10 | PATCH | Ensure no world writable files exist"
-  block:
+  block:    
       - name: "AUTOMATED | 6.1.10 | AUDIT | Ensure no world writable files exist | Get list of world-writable files"
         shell: find {{ item.mount }} -xdev -type f -perm -0002
         changed_when: false
@@ -178,7 +178,10 @@
             mode: o-w
         with_items:
             - "{{ ubtu20cis_6_1_10_wwf.results | map(attribute='stdout_lines') | flatten  }}"
-        when: ubtu20cis_no_world_write_adjust
+        when: 
+          - ubtu20cis_no_world_write_adjust
+          - ubtu20cis_6_1_10_wwf.results | map(attribute='stdout_lines') | flatten is not search ("/var/snap/microk8s/common/var/")
+
   when:
       - ubtu20cis_rule_6_1_10
   tags:
@@ -267,6 +270,7 @@
         when:
             - ubtu20cis_no_group_adjust
             - ubtu20cis_6_1_12_ungrouped_items_flatten | length > 0
+            - ubtu20cis_6_1_12_ungrouped_items_flatten is not search ("/var/snap/microk8s/common/var/")
   when:
       - ubtu20cis_rule_6_1_12
   tags:
@@ -325,7 +329,7 @@
 - name: "MANUAL | 6.1.14 | AUDIT | Audit SGID executables"
   block:
       - name: "MANUAL |6.1.14 | AUDIT | Audit SGID executables | Find SGID executables"
-        shell: find {{ item }} -xdev -type f -perm -2000
+        shell: find {{ item.mount }} -xdev -type f -perm -2000
         changed_when: false
         failed_when: false
         check_mode: false

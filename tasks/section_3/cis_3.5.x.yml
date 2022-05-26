@@ -37,7 +37,7 @@
       name: OpenSSH
       state: enabled
   when:
-      - ubtu20cis_rule_3_5_2_1
+      - ubtu20cis_rule_3_5_1_3
       - ubtu20cis_firewall_package == "ufw"
   tags:
       - level1-server

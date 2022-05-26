@@ -25,7 +25,7 @@ ubtu20cis_audit_complex: true
 # We've defined disruption-high to indicate items that are likely to cause
 # disruption in a normal workflow.  These items can be remediated automatically
 # but are disabled by default to avoid disruption.
-# Value of true runs duscruptive tasks, value of false will skip disruptive tasks
+# Value of true runs descriptive tasks, value of false will skip disruptive tasks
 ubtu20cis_disruption_high: true
 
 # Show "changed" for disruptive items not remediated per disruption-high
@@ -156,34 +156,37 @@ ubtu20cis_rule_3_4_1: true
 ubtu20cis_rule_3_4_2: true
 ubtu20cis_rule_3_4_3: true
 ubtu20cis_rule_3_4_4: true
-ubtu20cis_rule_3_5_1_1: true
-ubtu20cis_rule_3_5_1_2: true
-ubtu20cis_rule_3_5_1_3: true
-ubtu20cis_rule_3_5_1_4: true
-ubtu20cis_rule_3_5_1_5: true
-ubtu20cis_rule_3_5_1_6: true
-ubtu20cis_rule_3_5_1_7: true
-ubtu20cis_rule_3_5_2_1: true
-ubtu20cis_rule_3_5_2_2: true
-ubtu20cis_rule_3_5_2_3: true
-ubtu20cis_rule_3_5_2_4: true
-ubtu20cis_rule_3_5_2_5: true
-ubtu20cis_rule_3_5_2_6: true
-ubtu20cis_rule_3_5_2_7: true
-ubtu20cis_rule_3_5_2_8: true
-ubtu20cis_rule_3_5_2_9: true
-ubtu20cis_rule_3_5_2_10: true
-ubtu20cis_rule_3_5_3_1_1: true
-ubtu20cis_rule_3_5_3_1_2: true
-ubtu20cis_rule_3_5_3_1_3: true
-ubtu20cis_rule_3_5_3_2_1: true
-ubtu20cis_rule_3_5_3_2_2: true
-ubtu20cis_rule_3_5_3_2_3: true
-ubtu20cis_rule_3_5_3_2_4: true
-ubtu20cis_rule_3_5_3_3_1: true
-ubtu20cis_rule_3_5_3_3_2: true
-ubtu20cis_rule_3_5_3_3_3: true
-ubtu20cis_rule_3_5_3_3_4: true
+
+# Section 3 Firewall Borks K8s completely.
+# Enable on an as needs basis for servers that need it only therefore!
+ubtu20cis_rule_3_5_1_1: false
+ubtu20cis_rule_3_5_1_2: false
+ubtu20cis_rule_3_5_1_3: false
+ubtu20cis_rule_3_5_1_4: false
+ubtu20cis_rule_3_5_1_5: false
+ubtu20cis_rule_3_5_1_6: false
+ubtu20cis_rule_3_5_1_7: false
+ubtu20cis_rule_3_5_2_1: false
+ubtu20cis_rule_3_5_2_2: false
+ubtu20cis_rule_3_5_2_3: false
+ubtu20cis_rule_3_5_2_4: false
+ubtu20cis_rule_3_5_2_5: false
+ubtu20cis_rule_3_5_2_6: false
+ubtu20cis_rule_3_5_2_7: false
+ubtu20cis_rule_3_5_2_8: false
+ubtu20cis_rule_3_5_2_9: false
+ubtu20cis_rule_3_5_2_10: false
+ubtu20cis_rule_3_5_3_1_1: false
+ubtu20cis_rule_3_5_3_1_2: false
+ubtu20cis_rule_3_5_3_1_3: false
+ubtu20cis_rule_3_5_3_2_1: false
+ubtu20cis_rule_3_5_3_2_2: false
+ubtu20cis_rule_3_5_3_2_3: false
+ubtu20cis_rule_3_5_3_2_4: false
+ubtu20cis_rule_3_5_3_3_1: false
+ubtu20cis_rule_3_5_3_3_2: false
+ubtu20cis_rule_3_5_3_3_3: false
+ubtu20cis_rule_3_5_3_3_4: false
 
 # Section 4 Fixes
 # Section 4 is Logging and Auditing (Configure System Accounting (auditd), Configure Data Retention, and Configure Logging)
@@ -489,6 +492,10 @@ ubtu20cis_rsyslog_ansible_managed: true
 # Control 4.2.1.5
 # ubtu20cis_remote_log_server is the remote logging server
 ubtu20cis_remote_log_server: 192.168.2.100
+
+# Set the default to udp to prevent port starvation
+ubtu20cis_remote_log_server_protocol: 'udp'
+
 
 # Control 4.2.1.6
 ubtu20cis_system_is_log_server: true

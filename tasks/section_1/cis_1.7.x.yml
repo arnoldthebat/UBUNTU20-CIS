@@ -49,6 +49,7 @@
       mode: 0644
   when:
       - ubtu20cis_rule_1_7_4
+  ignore_errors: true # Azure Boxes may not have this installed
   tags:
       - level1-server
       - level1-workstation

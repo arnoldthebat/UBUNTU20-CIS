@@ -107,7 +107,7 @@
       path: /etc/rsyslog.conf
       block: |
           ##Enable sending of logs over TCP add the following line:
-          *.* @@{{ ubtu20cis_remote_log_server }}
+          *.* {{ '@@' if ubtu20cis_remote_log_server_protocol == 'tcp' else '@' }}{{ ubtu20cis_remote_log_server }}
       insertafter: EOF
   when:
       - ubtu20cis_rule_4_2_1_5
