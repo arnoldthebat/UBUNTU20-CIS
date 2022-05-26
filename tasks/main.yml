@@ -32,7 +32,7 @@
   tags:
       - prelim_tasks
 
-- include: parse_etc_password.yml
+- include_tasks: parse_etc_password.yml
   when:
       - ubtu20cis_section5_patch or
         ubtu20cis_section6_patch
