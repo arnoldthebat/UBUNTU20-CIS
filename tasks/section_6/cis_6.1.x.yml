@@ -226,6 +226,7 @@
         when:
             - ubtu20cis_no_owner_adjust
             - ubtu20cis_6_1_11_no_user_items_flatten | length > 0
+            - ubtu20cis_6_1_11_no_user_items_flatten is not search ("/var/snap/microk8s/common/var/")
   when:
       - ubtu20cis_rule_6_1_11
   tags:

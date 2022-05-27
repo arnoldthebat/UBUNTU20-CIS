@@ -26,7 +26,7 @@ ubtu20cis_audit_complex: true
 # disruption in a normal workflow.  These items can be remediated automatically
 # but are disabled by default to avoid disruption.
 # Value of true runs descriptive tasks, value of false will skip disruptive tasks
-ubtu20cis_disruption_high: true
+ubtu20cis_disruption_high: false
 
 # Show "changed" for disruptive items not remediated per disruption-high
 # setting to make them stand out.
@@ -554,13 +554,13 @@ ubtu20cis_sshd:
     ciphers: "chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr"
     macs: "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256"
     kex_algorithms: "curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256"
-    client_alive_interval: 300
+    client_alive_interval: 3600
     client_alive_count_max: 0
     login_grace_time: 60
     max_sessions: 4
     # WARNING: make sure you understand the precedence when working with these values!!
-    allow_users: "vagrant ubuntu"
-    allow_groups: "vagrant ubuntu"
+    # allow_users: "vagrant ubuntu"
+    # allow_groups: "vagrant ubuntu"
     # deny_users:
     # deny_groups:
 

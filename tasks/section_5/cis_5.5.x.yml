@@ -121,7 +121,7 @@
                 - "{{ ubtu20cis_5_5_1_5_user_list.stdout_lines }}"
         when: ubtu20cis_5_5_1_5_user_list.stdout | length > 0
 
-      - name: "AUTOMATED | 5.5.1.5 | PATCH | Ensure all users last password change date is in the past | Lock accounts with furtre PW changed dates"
+      - name: "AUTOMATED | 5.5.1.5 | PATCH | Ensure all users last password change date is in the past | Lock accounts with future PW changed dates"
         command: passwd --expire {{ item }}
         failed_when: false
         with_items:
@@ -145,7 +145,7 @@
       - name: "AUTOMATED | 5.5.2 | PATCH | Ensure system accounts are secured | Set system accounts to login"
         user:
             name: "{{ item }}"
-            shell: /sbin/nologin
+            shell: /usr/sbin/nologin
         with_items:
             - "{{ ubtu20cis_passwd | selectattr('uid', '<', 1000) | map(attribute='id') | list }}"
         when:
@@ -153,6 +153,11 @@
             - item != "sync"
             - item != "shutdown"
             - item != "halt"
+            - item != "tss"
+            - item != "postgres"
+            - item != "pollinate"
+            - item != "lxd"
+            - item != "Debian-snmp"
 
       - name: "AUTOMATED | 5.5.2 | PATCH | Ensure system accounts are secured | Lock non-root system accounts"
         user:
